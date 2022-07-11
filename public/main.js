@@ -47,30 +47,40 @@ getXML.onclick = () => {
 getHTML.onclick = () => {
   const request = new XMLHttpRequest();
   request.open("GET", "/3.html");
-  request.onload = () => {
-    // 创建div标签
-    const div = document.createElement("div");
-    // 填写div内容
-    div.innerHTML = request.response;
-    // 插到body里面
-    document.body.appendChild(div);
+  request.onreadystatechange = () => {
+    if (request.readyState === 4) {
+      if (request.status >= 200 && request.status < 300) {
+        // 创建div标签
+        const div = document.createElement("div");
+        // 填写div内容
+        div.innerHTML = request.response;
+        // 插到body里面
+        document.body.appendChild(div);
+      } else {
+        alert("加载 HTML失败");
+      }
+    }
   };
-  request.onerror = () => {};
   request.send();
 };
 
 getJS.onclick = () => {
   const request = new XMLHttpRequest();
   request.open("GET", "/2.js");
-  request.onload = () => {
-    // 创建script标签
-    const script = document.createElement("script");
-    // 填写script内容
-    script.innerHTML = request.response;
-    // 插到body里面
-    document.body.appendChild(script);
+  request.onreadystatechange = () => {
+    if (request.readyState === 4) {
+      if (request.status >= 200 && request.status < 300) {
+        // 创建script标签
+        const script = document.createElement("script");
+        // 填写script内容
+        script.innerHTML = request.response;
+        // 插到body里面
+        document.body.appendChild(script);
+      } else {
+        alert("加载 JS失败");
+      }
+    }
   };
-  request.onerror = () => {};
   request.send();
 };
 
