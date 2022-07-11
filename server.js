@@ -4,7 +4,7 @@ var url = require("url");
 var port = process.argv[2];
 
 if (!port) {
-  console.log("请指定端口号好不啦？\nnode server.js 8888 这样不会吗？");
+  console.log("请指定端口号？\nnode server.js 8888 这样？");
   process.exit(1);
 }
 
@@ -21,7 +21,7 @@ var server = http.createServer(function (request, response) {
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log("有个傻子发请求过来啦！路径（带查询参数）为：" + pathWithQuery);
+  console.log("有人发请求过来啦！路径（带查询参数）为：" + pathWithQuery);
 
   if (path === "/index.html") {
     response.statusCode = 200;
